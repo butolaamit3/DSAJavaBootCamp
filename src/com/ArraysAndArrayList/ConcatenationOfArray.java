@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class ConcatenationOfArray {
     public static void main(String[] args) {
-        int[] nums = {1,2,3};
-        System.out.println(Arrays.toString(getConcatenation3(nums)));
+        int[] nums = {1,2,3,4,5};
+        System.out.println(Arrays.toString(getConcatenation1(nums)));
     }
     public static int[] getConcatenation(int[] nums) {
         int[] ans = new int[2 * nums.length];
