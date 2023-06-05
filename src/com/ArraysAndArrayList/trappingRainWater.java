@@ -8,7 +8,7 @@ package com.ArraysAndArrayList;
 public class trappingRainWater {
     public static void main(String[] args) {
         int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        System.out.println(waterSum1(height));
+        System.out.println(waterSum3(height));
     }
 
     private static int waterSum(int[] height) {
@@ -54,5 +54,33 @@ public class trappingRainWater {
         }
         return water;
     }
+    private static int waterSum3(int[] height){
+        int left = 0;
+        int right = 0;
+        int[] leftMax = new int[height.length];
+        int[] rightMax = new int[height.length];
+        leftMax[0] = 0;
+        rightMax[height.length-1] = 0;
+        int water = 0;
+        int sum = 0;
+        for (int i = 1; i <height.length ; i++) {
+            leftMax[i] = Math.max(leftMax[i-1],height[i-1]);
+        }
+        for (int i = height.length-2; i >=0 ; i--) {
+            rightMax[i] = Math.max(rightMax[i+1],height[i+1]);
+
+        }
+        for (int i = 0; i <height.length-1 ; i++) {
+            water= Math.min(leftMax[i],rightMax[i])-height[i];
+            if(water<0){
+                water = 0;
+            }
+            sum +=water;
+
+        }
+        return sum;
+    }
+
+
 
 }
