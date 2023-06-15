@@ -18,18 +18,17 @@ public class PeakElementOfMountainArray {
         int max = arr[0];
         while(start<end){
             int mid = start+(end-start)/2;
-
-//          if the element at mid is greater than mid+1 the we are in                 decreasing orede array
+//          if the element at mid is greater than mid+1 then we are in decreasing ordered array
             if(arr[mid]>arr[mid+1]){
 
-//          new max is mid but there is also possibilities that                       max is also in the left
+//          new max is mid but there is also possibilities that max is also in the left
                 max = mid;
 
 //              the new end is mid and start is same
                 end = mid;
             }
             else{
-//                 if element in mid is smaller than mid+1 then new start is mid+1                      and end remail same
+//                 if element in mid is smaller than mid+1 then new start is mid+1 and end email same
                 start = mid+1;
             }
         }
