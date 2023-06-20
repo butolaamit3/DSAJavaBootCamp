@@ -14,50 +14,64 @@ class MyLinkedList {
     int size;
 
     public MyLinkedList() {
-        head = new Node(-1); //dummy Node
-        size = 0;
+        this.head = null;
+        this.size = 0;
     }
 
     public int get(int index) {
         if(index>=size){
             return -1;
         }
-        Node temp = head.next;
-        for(int i = 0;i<index;i++){
+        if(index==0){
+            return head.value;
+        }
+        Node temp = head;
+        for(int i = 1;i<index;i++){
             temp = temp.next;
         }
-        return temp.value;
+        return temp.next.value;
 
     }
 
     public void addAtHead(int val) {
-        Node temp = head.next;
-        head.next = new Node(val);
-        head.next.next = temp;
+        Node node = new Node(val);
+        node.next = head;
+        head = node;
         size++;
 
     }
 
     public void addAtTail(int val) {
+        Node node = new Node(val);
+        if(head==null){
+            addAtHead(val);
+            return;
+        }
+
         Node temp = head;
         while(temp.next!=null){
             temp = temp.next;
         }
-        temp.next = new Node(val);
+        temp.next = node;
         size++;
     }
 
     public void addAtIndex(int index, int val) {
+        Node node  = new Node(val);
         if(index>size){
             return;
         }
+        if(index==0){
+            addAtHead(val);
+            return;
+        }
+
         Node temp  = head;
-        for(int i = 0; i<index;i++){
+        for(int i = 1; i<index;i++){
             temp = temp.next;
         }
-        Node temp1 = temp.next;
-        temp.next = new Node(val);
-        temp.next.next = temp1;
+        node.next = temp.next;
+        temp.next = node;
         size++;
 
     }
@@ -66,16 +80,28 @@ class MyLinkedList {
         if(index>=size){
             return;
         }
+        if(index==0){
+            head = head.next;
+            size--;
+            return;
+        }
         Node temp = head;
-        for(int i = 0; i<index;i++){
+        for(int i = 1; i<index;i++){
             temp = temp.next;
         }
-        Node temp1 = temp.next;
-        temp.next = temp1.next;
-        temp1.next = null;
+
+        Node temp2 = temp.next;
+        temp.next = temp2.next;
+        temp2.next = null;
         size--;
-
-
+    }
+    public void display(){
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.value+"->");
+            temp = temp.next;
+        }
+        System.out.println("END");
     }
 }
 
