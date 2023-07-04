@@ -1,9 +1,7 @@
 package com.sorting.questions;
 
-import java.util.Arrays;
-
 //Que 268 - https://leetcode.com/problems/missing-number/
-public class missingNo {
+public class MissingNo {
     public static void main(String[] args) {
         int [] nums = {4,0,2,1};
         System.out.println(missingNumber(nums));
