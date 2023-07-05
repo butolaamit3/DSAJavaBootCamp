@@ -1,5 +1,5 @@
 package com.sorting.questions;
-//Oues - 287. Find the Duplicate Number
+//Ques - 287. Find the Duplicate Number
 //https://leetcode.com/problems/find-the-duplicate-number/description/
 public class FindDuplicate {
     public static void main(String[] args) {
